@@ -8,7 +8,7 @@ using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Support.UI;
 using UnitTestProject1;
 
-namespace WebAddressBookTests1
+namespace WebAddressBookTests
 {
     [TestFixture]
     public class PersonCreationTests
@@ -44,7 +44,7 @@ namespace WebAddressBookTests1
         public void PersonCreationTest()
         {
             OpenHomePage();
-            Login(new AccountDataPerson("admin", "secret"));
+            Login(new AccountData("admin", "secret"));
             NewPersonCreation();
             FillPersonForm(new PersonData("Carl", "Gallagher"));
             SubmitPersonCreation();
@@ -76,7 +76,7 @@ namespace WebAddressBookTests1
             driver.FindElement(By.LinkText("add new")).Click();
         }
 
-        private void Login(AccountDataPerson account)
+        private void Login(AccountData account)
         {
             driver.FindElement(By.Name("user")).Click();
             driver.FindElement(By.Name("user")).Clear();
