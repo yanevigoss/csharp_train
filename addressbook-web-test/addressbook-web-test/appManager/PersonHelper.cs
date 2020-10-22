@@ -13,8 +13,8 @@ namespace WebAddressBookTests
     public class PersonHelper : HelperBase
     {
         
-        public PersonHelper(ApplicationManager manager) 
-            : base(manager)
+        public PersonHelper(IWebDriver driver) 
+            : base(driver)
         {
         }
         public void NewPersonCreation()

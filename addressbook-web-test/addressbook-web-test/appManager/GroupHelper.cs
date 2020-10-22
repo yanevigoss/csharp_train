@@ -13,8 +13,8 @@ namespace WebAddressBookTests
     public class GroupHelper : HelperBase
     {
 
-        public GroupHelper(ApplicationManager manager)
-            : base(manager)
+        public GroupHelper(IWebDriver driver)
+            : base(driver)
         {
         }
 

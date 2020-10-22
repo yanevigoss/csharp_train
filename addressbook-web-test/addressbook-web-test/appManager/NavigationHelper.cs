@@ -15,11 +15,12 @@ namespace WebAddressBookTests
     {
          private string baseURL;
 
-        public NavigationHelper(ApplicationManager manager, string baseURL) 
-            : base(manager)
+        public NavigationHelper(IWebDriver driver, string baseURL) 
+            : base(driver)
         {
             this.baseURL = baseURL;
         }
+
 
         public void OpenHomePage()
         {
