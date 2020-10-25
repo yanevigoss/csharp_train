@@ -28,6 +28,31 @@ namespace WebAddressBookTests
             return this;
         }
 
+        public GroupHelper Modify(int p, GroupData newData)
+        {
+            manager.Navigator.GoToGroupsPage();
+
+            SelectGroup(p);
+            InitGroupModication();
+            FillGroupForm(newData);
+            SubmitGroupModification();
+            ReturnToGroupPage();
+
+            return this;
+        }
+
+        public GroupHelper SubmitGroupModification()
+        {
+            driver.FindElement(By.Name("update")).Click();
+            return this;
+        }
+
+        public GroupHelper InitGroupModication()
+        {
+            driver.FindElement(By.Name("edit")).Click();
+            return this;
+        }
+
         public GroupHelper Create(GroupData group)
         {
             manager.Navigator.GoToGroupsPage();

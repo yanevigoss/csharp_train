@@ -14,9 +14,11 @@ namespace WebAddressBookTests
         [Test]
         public void PersonCreationTest()
         {
-            app.Person.NewPersonCreation();
-            app.Person.FillPersonForm(new PersonData("Carl", "Gallagher"));
-            app.Person.SubmitPersonCreation();
+            PersonData person = new PersonData("", " ");
+            person.Firstname = "PEtr";
+            person.Secondname = "Ivanov";
+
+            app.Person.CreatePerson(person);
             app.Group.ReturnToHomePage();
         }
 

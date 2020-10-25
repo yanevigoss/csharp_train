@@ -17,11 +17,70 @@ namespace WebAddressBookTests
             : base(manager)
         {
         }
-        public void NewPersonCreation()
+
+        public PersonHelper RemovePerson(int p)
+        {
+            SelectPerson(p);
+            InitPersonRemove();
+            SubmitPersonRemove();
+            return this;
+        }
+
+        public PersonHelper ModifyPerson(int p, PersonData newData)
+        {
+            SelectPerson(p);
+            InitPersonModify();
+            FillPersonForm(newData);
+            SubmitPersonModify();
+            return this;
+        }
+
+        public PersonHelper SubmitPersonModify()
+        {
+            driver.FindElement(By.Name("update")).Click();
+            return this;
+        }
+
+        public PersonHelper InitPersonModify()
+        {
+            driver.FindElement(By.XPath("//img[@alt='Edit']")).Click();
+            return this;
+        }
+
+        public PersonHelper SubmitPersonRemove()
+        {
+            driver.SwitchTo().Alert().Accept();
+            return this;
+        }
+
+        public PersonHelper InitPersonRemove()
+        {
+            driver.FindElement(By.XPath("//input[@value='Delete']")).Click();
+            return this;
+        }
+
+        public PersonHelper SelectPerson(int index)
+        {
+            driver.FindElement(By.XPath("(//input[@name='selected[]'])[" + index + "]")).Click();
+            return this;
+        }
+
+        public PersonHelper CreatePerson(PersonData person)
+        {
+            NewPersonCreation();
+            FillPersonForm(person);
+            SubmitPersonCreation();
+            return this;
+        }
+        public PersonHelper NewPersonCreation()
         {
             driver.FindElement(By.LinkText("add new")).Click();
+            return this;
         }
-        public void FillPersonForm(PersonData person)
+
+       
+
+        public PersonHelper FillPersonForm(PersonData person)
         {
             driver.FindElement(By.Name("firstname")).Click();
             driver.FindElement(By.Name("firstname")).Clear();
@@ -29,11 +88,13 @@ namespace WebAddressBookTests
             driver.FindElement(By.Name("lastname")).Click();
             driver.FindElement(By.Name("lastname")).Clear();
             driver.FindElement(By.Name("lastname")).SendKeys(person.Secondname);
+            return this;
         }
 
-        public void SubmitPersonCreation()
+        public PersonHelper SubmitPersonCreation()
         {
             driver.FindElement(By.XPath("(//input[@name='submit'])[2]")).Click();
+            return this;
         }
     }
 }
