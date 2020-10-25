@@ -14,15 +14,23 @@ namespace WebAddressBookTests
         [Test]
         public void GroupCreationTest()
         {
-            app.Navigator.GoToGroupsPage();
+            
             GroupData groups = new GroupData("1");
             groups.Header = "sd";
             groups.Footer = "23";
-            app.Group
-                .NewGroupCreation()
-                .FillGroupForm(groups)
-                .SubmitGroupCreation()
-                .ReturnToGroupPage();
+
+            app.Group.Create(groups);
+        }
+
+        [Test]
+        public void EmptyGroupCreationTest()
+        {
+            
+            GroupData groups = new GroupData("");
+            groups.Header = "";
+            groups.Footer = "";
+
+            app.Group.Create(groups);
         }
 
     }

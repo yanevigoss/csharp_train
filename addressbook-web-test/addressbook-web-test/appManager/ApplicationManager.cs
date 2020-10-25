@@ -25,10 +25,10 @@ namespace WebAddressBookTests
             driver = new FirefoxDriver();
             baseURL = "http://localhost/addressbook/";
 
-            loginHelper = new LoginHelper(driver);
-            navigator = new NavigationHelper(driver, baseURL);
-            group = new GroupHelper(driver);
-            person = new PersonHelper(driver);
+            loginHelper = new LoginHelper(this);
+            navigator = new NavigationHelper(this, baseURL);
+            group = new GroupHelper(this);
+            person = new PersonHelper(this);
 
         }
 
