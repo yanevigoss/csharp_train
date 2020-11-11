@@ -17,6 +17,7 @@ namespace WebAddressBookTests
             newData.Firstname = "PEtr";
             newData.Secondname = "Ivanov";
 
+            app.Person.PersonExistanceCheck(1);
             app.Person.ModifyPerson(1, newData);
         }
 

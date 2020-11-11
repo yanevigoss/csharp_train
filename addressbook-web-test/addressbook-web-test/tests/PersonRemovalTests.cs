@@ -15,6 +15,7 @@ namespace WebAddressBookTests
         public void PersonRemovalTest()
 
         {
+            app.Person.PersonExistanceCheck(1);
             app.Person.RemovePerson(1);
         }
 

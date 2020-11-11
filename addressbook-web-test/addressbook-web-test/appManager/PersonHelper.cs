@@ -20,6 +20,8 @@ namespace WebAddressBookTests
 
         public PersonHelper RemovePerson(int p)
         {
+            manager.Navigator.OpenHomePage();
+
             SelectPerson(p);
             InitPersonRemove();
             SubmitPersonRemove();
@@ -28,6 +30,8 @@ namespace WebAddressBookTests
 
         public PersonHelper ModifyPerson(int p, PersonData newData)
         {
+            manager.Navigator.OpenHomePage();
+
             SelectPerson(p);
             InitPersonModify();
             FillPersonForm(newData);
@@ -96,5 +100,22 @@ namespace WebAddressBookTests
             driver.FindElement(By.XPath("(//input[@name='submit'])[2]")).Click();
             return this;
         }
+        public PersonHelper PersonExistanceCheck(int index)
+        {
+            manager.Navigator.OpenHomePage();
+            if (IsElementPresent(By.XPath("(//input[@name='selected[]'])[" + index + "]")))
+            {
+                return this;
+            }
+            else
+            {
+                ApplicationManager app = ApplicationManager.GetInstance();
+                PersonData person = new PersonData("Baggy", "Straus");
+
+                app.Person.CreatePerson(person);
+            }
+            return this;
+        }
+
     }
 }

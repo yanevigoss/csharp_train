@@ -109,5 +109,23 @@ namespace WebAddressBookTests
             driver.FindElement(By.LinkText("home page")).Click();
             return this;
         }
+
+        public GroupHelper GroupExistanceCheck(int index)
+        {
+            manager.Navigator.GoToGroupsPage();
+            if (IsElementPresent(By.XPath("(//input[@name='selected[]'])[" + index + "]")))
+            {
+                return this;
+            }
+            else
+            {
+                ApplicationManager app = ApplicationManager.GetInstance();
+                GroupData group = new GroupData("123");
+                group.Header = "daddy";
+                group.Footer = "puppy";
+                app.Group.Create(group);
+            }
+            return this;
+        }
     }
 }
