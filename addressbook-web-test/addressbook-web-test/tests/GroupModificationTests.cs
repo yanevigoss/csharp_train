@@ -9,7 +9,7 @@ using WebAddressBookTests;
 namespace WebAddressBookTests
 {
     [TestFixture]
-    class GroupModificationTests : TestBase
+    class GroupModificationTests : AuthTestBase
     {
         [Test]
         public void GroupCreationTest()
