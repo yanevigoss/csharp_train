@@ -28,6 +28,11 @@ namespace WebAddressBookTests
             return this;
         }
 
+        internal List<GroupData> GetGroupList()
+        {
+            throw new NotImplementedException();
+        }
+
         public GroupHelper Modify(int p, GroupData newData)
         {
             manager.Navigator.GoToGroupsPage();
@@ -119,11 +124,11 @@ namespace WebAddressBookTests
             }
             else
             {
-                ApplicationManager app = ApplicationManager.GetInstance();
+                ApplicationManager manager = ApplicationManager.GetInstance();
                 GroupData group = new GroupData("123");
                 group.Header = "daddy";
                 group.Footer = "puppy";
-                app.Group.Create(group);
+                manager.Group.Create(group);
             }
             return this;
         }
