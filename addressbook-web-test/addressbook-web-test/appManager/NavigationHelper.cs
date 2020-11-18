@@ -24,12 +24,12 @@ namespace WebAddressBookTests
 
         public void OpenHomePage()
         {
-            driver.Navigate().GoToUrl(baseURL);
+            driver.Navigate().GoToUrl("http://localhost/addressbook");
         }
 
         public void GoToGroupsPage()
         {
-            if (driver.Url == baseURL + "/addressbook/group.php"
+            if (driver.Url == baseURL + "/group.php"
                 && IsElementPresent(By.Name("new")))
             {
                 return;

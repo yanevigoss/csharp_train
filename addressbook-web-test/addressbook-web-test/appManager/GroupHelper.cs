@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Common;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Support.UI;
+
 
 namespace WebAddressBookTests
 {
@@ -18,6 +20,19 @@ namespace WebAddressBookTests
         {
         }
 
+        public List<GroupData> GetGroupList()
+        {
+
+            List<GroupData> groups = new List<GroupData>();
+            manager.Navigator.GoToGroupsPage();
+            ICollection<IWebElement> elements = driver.FindElements(By.CssSelector("span.group"));
+            foreach (IWebElement element in elements)
+
+            {
+                groups.Add(new GroupData(element.Text));
+            }
+            return groups;
+        }
         public GroupHelper Remove(int p)
         {
             manager.Navigator.GoToGroupsPage();
@@ -28,10 +43,6 @@ namespace WebAddressBookTests
             return this;
         }
 
-        internal List<GroupData> GetGroupList()
-        {
-            throw new NotImplementedException();
-        }
 
         public GroupHelper Modify(int p, GroupData newData)
         {
@@ -124,7 +135,7 @@ namespace WebAddressBookTests
             }
             else
             {
-                ApplicationManager manager = ApplicationManager.GetInstance();
+                manager = ApplicationManager.GetInstance();
                 GroupData group = new GroupData("123");
                 group.Header = "daddy";
                 group.Footer = "puppy";
@@ -132,5 +143,7 @@ namespace WebAddressBookTests
             }
             return this;
         }
+
+       
     }
 }
