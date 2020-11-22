@@ -109,7 +109,6 @@ namespace WebAddressBookTests
             }
             else
             {
-                manager = ApplicationManager.GetInstance();
                 PersonData person = new PersonData("Baggy", "Straus");
 
                 manager.Person.CreatePerson(person);
